@@ -18,43 +18,75 @@ const Projects = () => {
     e.preventDefault();
 
     try {
-      const res = await API.post("/projects", project);
+      const res = await API.post(
+        "/projects",
+        project
+      );
 
       alert(res.data.message);
+
+      setProject({
+        title: "",
+        description: "",
+      });
+
     } catch (error) {
-      console.log(error);
+      alert("Project Creation Failed");
     }
   };
 
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold mb-5">
-        Create Project
-      </h1>
+    <div className="min-h-screen bg-gray-100 flex justify-center items-center p-10">
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-5 rounded shadow w-96"
+        className="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-2xl"
       >
-        <input
-          type="text"
-          name="title"
-          placeholder="Project Title"
-          className="w-full border p-2 mb-3"
-          onChange={handleChange}
-        />
 
-        <textarea
-          name="description"
-          placeholder="Description"
-          className="w-full border p-2 mb-3"
-          onChange={handleChange}
-        />
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+          Create Project
+        </h1>
 
-        <button className="bg-blue-500 text-white px-4 py-2 w-full">
+        <div className="mb-5">
+
+          <label className="block mb-2 font-semibold text-gray-700">
+            Project Title
+          </label>
+
+          <input
+            type="text"
+            name="title"
+            placeholder="Enter Project Title"
+            value={project.title}
+            onChange={handleChange}
+            className="w-full border border-gray-300 p-4 rounded-xl outline-none focus:border-blue-500"
+          />
+
+        </div>
+
+        <div className="mb-6">
+
+          <label className="block mb-2 font-semibold text-gray-700">
+            Project Description
+          </label>
+
+          <textarea
+            name="description"
+            rows="6"
+            placeholder="Enter Project Description"
+            value={project.description}
+            onChange={handleChange}
+            className="w-full border border-gray-300 p-4 rounded-xl outline-none focus:border-blue-500"
+          />
+
+        </div>
+
+        <button className="bg-blue-600 hover:bg-blue-700 transition duration-300 text-white font-semibold px-6 py-4 rounded-xl w-full">
           Create Project
         </button>
+
       </form>
+
     </div>
   );
 };

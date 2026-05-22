@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -11,15 +12,48 @@ import Tasks from "./pages/Tasks";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/tasks" element={<Tasks />} />
-      </Routes>
+      <div className="flex">
+
+        <Sidebar />
+
+        <div className="ml-[260px] w-full">
+
+          <Routes>
+
+            <Route
+              path="/"
+              element={<Login />}
+            />
+
+            <Route
+              path="/register"
+              element={<Register />}
+            />
+
+            <Route
+              path="/dashboard"
+              element={<Dashboard />}
+            />
+
+            <Route
+              path="/projects"
+              element={<Projects />}
+            />
+
+            <Route
+              path="/tasks"
+              element={<Tasks />}
+            />
+
+          </Routes>
+
+          <Footer />
+
+        </div>
+
+      </div>
+
     </BrowserRouter>
   );
 }

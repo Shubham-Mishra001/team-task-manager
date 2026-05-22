@@ -24,36 +24,37 @@ const Login = () => {
 
       window.location.href = "/dashboard";
     } catch (error) {
-      console.log(error);
       alert("Login Failed");
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 to-indigo-700">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded shadow w-96"
+        className="bg-white p-10 rounded-2xl shadow-2xl w-[400px]"
       >
-        <h2 className="text-2xl font-bold mb-5">Login</h2>
+        <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">
+          Welcome Back
+        </h2>
 
         <input
           type="email"
           name="email"
-          placeholder="Email"
-          className="w-full border p-2 mb-3"
+          placeholder="Enter Email"
+          className="w-full border border-gray-300 p-3 rounded-lg mb-5 outline-none focus:border-blue-500"
           onChange={handleChange}
         />
 
         <input
           type="password"
           name="password"
-          placeholder="Password"
-          className="w-full border p-2 mb-3"
+          placeholder="Enter Password"
+          className="w-full border border-gray-300 p-3 rounded-lg mb-5 outline-none focus:border-blue-500"
           onChange={handleChange}
         />
 
-        <button className="bg-green-500 text-white px-4 py-2 w-full">
+        <button className="bg-blue-600 hover:bg-blue-700 transition duration-300 text-white font-semibold px-4 py-3 rounded-lg w-full">
           Login
         </button>
       </form>
